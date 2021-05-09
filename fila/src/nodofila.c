@@ -17,15 +17,15 @@ NodoFila criaNodoFila(void *elem)
 
     nf = malloc(sizeof(struct nodoFila));
 
-    if (!nf) {
+    if (nf) {
+        nf->elem = elem;
+        nf->ant = NULL;
+    }
+    else {
         fprintf(stderr,
                 "%s:%c: não foi possível alocar memória para o nodo da fila!\n",
                 __func__, __LINE__);
-        return NULL;
     }
-
-    nf->elem = elem;
-    nf->ant = NULL;
 
     return nf;
 }

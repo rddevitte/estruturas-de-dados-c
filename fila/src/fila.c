@@ -24,15 +24,15 @@ Fila criaFila(void)
 
     f = malloc(sizeof(struct fila));
 
-    if (!f) {
+    if (f) {
+        f->frente = f->atras = NULL;
+        f->tam = 0;
+    }
+    else {
         fprintf(stderr,
                 "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
                 __func__, __LINE__);
-        return NULL;
     }
-
-    f->frente = f->atras = NULL;
-    f->tam = 0;
 
     return f;
 }

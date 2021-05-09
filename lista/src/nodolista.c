@@ -17,17 +17,17 @@ NodoLista criaNodoLista(void *elem, NodoLista ant, NodoLista prox)
 
     nl = malloc(sizeof(struct nodoLista));
 
-    if (!nl) {
+    if (nl) {
+        nl->elem = elem;
+        nl->ant = ant;
+        nl->prox = prox;
+    }
+    else {
         fprintf(
             stderr,
             "%s:%d: não foi possível alocar memória para o nodo da lista!\n",
             __func__, __LINE__);
-        return NULL;
     }
-
-    nl->elem = elem;
-    nl->ant = ant;
-    nl->prox = prox;
 
     return nl;
 }

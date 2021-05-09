@@ -28,16 +28,16 @@ Lista criaLista(void)
 
     l = malloc(sizeof(struct lista));
 
-    if (!l) {
+    if (l) {
+        l->inicio = NULL;
+        l->fim = NULL;
+        l->tam = 0;
+    }
+    else {
         fprintf(stderr,
                 "%s:%d: não foi possível alocar memória para a lista!\n",
                 __func__, __LINE__);
-        return NULL;
     }
-
-    l->inicio = NULL;
-    l->fim = NULL;
-    l->tam = 0;
 
     return l;
 }

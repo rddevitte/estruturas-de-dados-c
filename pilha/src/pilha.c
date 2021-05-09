@@ -25,15 +25,15 @@ Pilha criaPilha(void)
 
     p = malloc(sizeof(struct pilha));
 
-    if (!p) {
+    if (p) {
+        p->topo = NULL;
+        p->tam = 0;
+    }
+    else {
         fprintf(stderr,
                 "%s:%d: erro ao alocar espaço de memória para a pilha\n",
                 __func__, __LINE__);
-        return NULL;
     }
-
-    p->topo = NULL;
-    p->tam = 0;
 
     return p;
 }
