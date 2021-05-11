@@ -1,6 +1,8 @@
+cscope.*
 fila/obj/
 lista/obj/
 pilha/obj/
+tags
 testes/letra/letra.o
 testes/nums/nums.o
 testes/obj/
