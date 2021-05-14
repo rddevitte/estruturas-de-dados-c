@@ -12,7 +12,7 @@
 int main(void)
 {
     Lista letras;
-    char *letra;
+    char* letra;
     int rem;
 
     setlocale(LC_ALL, "pt_BR.utf8");
@@ -77,7 +77,7 @@ int main(void)
     inserePos(letras, 4, criaLetra('G'));
     insereFim(letras, criaLetra('H'));
 
-    inserePos(letras, 99, criaLetra('%'));            // pos. inválida
+    inserePos(letras, 99, criaLetra('%')); // pos. inválida
     insereOrd(letras, criaLetra('A'), comparaLetras); // deve inserir no início
     insereOrd(letras, criaLetra('J'), comparaLetras); // deve inserir no final
     // deve ins. entre 'E' e 'G'
@@ -95,19 +95,19 @@ int main(void)
     putchar('\n');
 
     // Parte 4: buscando elementos
-    letra = (char *)elemInicio(letras);
+    letra = (char*)elemInicio(letras);
     printf("Elem. início: %p\n", letra);
     imprimeLetra(letra);
 
-    letra = (char *)elemFim(letras);
+    letra = (char*)elemFim(letras);
     printf("Elem. fim: %p\n", letra);
     imprimeLetra(letra);
 
-    letra = (char *)elemPos(letras, 5);
+    letra = (char*)elemPos(letras, 5);
     printf("Elem. pos. 5: %p\n", letra);
     imprimeLetra(letra);
 
-    letra = (char *)elemPos(letras, 99); // buscando elem. de uma pos. inválida
+    letra = (char*)elemPos(letras, 99); // buscando elem. de uma pos. inválida
     printf("Elem. pos. 99: %p\n", letra);
     imprimeLetra(letra);
 
@@ -131,7 +131,7 @@ int main(void)
 
     removePos(letras, 2, destroiLetra); // remove 'G'
     removeInicio(letras, destroiLetra); // remove 'B'
-    removeFim(letras, destroiLetra);    // remove 'I'
+    removeFim(letras, destroiLetra); // remove 'I'
 
     puts("\nLista de letras:");
     percorre(letras, imprimeLetra);

@@ -10,7 +10,7 @@
 int main(void)
 {
     Fila nums;
-    int *num;
+    int* num;
 
     setlocale(LC_ALL, "pt_BR.utf8");
 
@@ -53,7 +53,7 @@ int main(void)
     puts("Fila:");
     percorre(nums, imprimeNum);
     printf("Tam. fila: %d\n", tamanho(nums));
-    num = (int *)desenfileira(nums);
+    num = (int*)desenfileira(nums);
     printf("Núm. desenfileirado: %d\n", *num);
     free(num);
     printf("Tam. fila: %d\n", tamanho(nums));
@@ -64,7 +64,7 @@ int main(void)
     puts("Fila:");
     percorre(nums, imprimeNum);
     printf("Tam. fila: %d\n", tamanho(nums));
-    num = (int *)desenfileira(nums);
+    num = (int*)desenfileira(nums);
     printf("Núm. desenfileirado: %d\n", *num);
     free(num);
     puts("Fila:");

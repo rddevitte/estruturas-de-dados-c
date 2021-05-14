@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void *criaLetra(char c)
+void* criaLetra(char c)
 {
-    char *pc;
+    char* pc;
 
     pc = malloc(sizeof(char));
 
@@ -19,19 +19,19 @@ void *criaLetra(char c)
     return pc;
 }
 
-void imprimeLetra(void *c)
+void imprimeLetra(void* c)
 {
     if (!c) {
         fprintf(stderr, "%s:%d: letra nula!\n", __func__, __LINE__);
         return;
     }
 
-    printf("c = %p, *c = '%c'\n", c, *(char *)c);
+    printf("c = %p, *c = '%c'\n", c, *(char*)c);
 
     return;
 }
 
-void destroiLetra(void **c)
+void destroiLetra(void** c)
 {
     if (!c) {
         fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
@@ -49,19 +49,19 @@ void destroiLetra(void **c)
     return;
 }
 
-int comparaLetras(void *a, void *b)
+int comparaLetras(void* a, void* b)
 {
     char *la, *lb;
     int c;
 
     if (!a || !b) {
         fprintf(stderr, "%s:%d: ponteiro para letra a ou b nulo(s)!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return 2;
     }
 
-    la = (char *)a;
-    lb = (char *)b;
+    la = (char*)a;
+    lb = (char*)b;
 
     if (*la > *lb)
         c = 1;
@@ -73,45 +73,45 @@ int comparaLetras(void *a, void *b)
     return c;
 }
 
-int condLetraEntreDeF(void *l)
+int condLetraEntreDeF(void* l)
 {
-    char *cl;
+    char* cl;
 
     if (!l) {
         fprintf(stderr, "%s:%d: ponteiro para letra nulo!\n", __func__,
-                __LINE__);
+            __LINE__);
         return -1;
     }
 
-    cl = (char *)l;
+    cl = (char*)l;
 
     return (*cl >= 'D' && *cl <= 'F' ? 1 : 0);
 }
 
-int condLetraA(void *l)
+int condLetraA(void* l)
 {
-    char *cl;
+    char* cl;
 
     if (!l) {
         fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
         return -1;
     }
 
-    cl = (char *)l;
+    cl = (char*)l;
 
     return (*cl == 'A' ? 1 : 0);
 }
 
-int condLetraJ(void *l)
+int condLetraJ(void* l)
 {
-    char *cl;
+    char* cl;
 
     if (!l) {
         fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
         return -1;
     }
 
-    cl = (char *)l;
+    cl = (char*)l;
 
     return (*cl == 'J' ? 1 : 0);
 }

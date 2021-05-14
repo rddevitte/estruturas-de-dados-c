@@ -11,7 +11,7 @@
  * @param ant Ponteiro para o nodo anterior
  * @param prox Ponteiro para o próx. nodo
  */
-NodoLista criaNodoLista(void *elem, NodoLista ant, NodoLista prox)
+NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 {
     NodoLista nl;
 
@@ -21,8 +21,7 @@ NodoLista criaNodoLista(void *elem, NodoLista ant, NodoLista prox)
         nl->elem = elem;
         nl->ant = ant;
         nl->prox = prox;
-    }
-    else {
+    } else {
         fprintf(
             stderr,
             "%s:%d: não foi possível alocar memória para o nodo da lista!\n",
@@ -38,11 +37,11 @@ NodoLista criaNodoLista(void *elem, NodoLista ant, NodoLista prox)
  * @param destroiElem O ponteiro para uma função que desaloca o elemento
  * armazenado no nodo
  */
-void destroiNodoLista(NodoLista *nl, void (*destroiElem)(void **))
+void destroiNodoLista(NodoLista* nl, void (*destroiElem)(void**))
 {
     if (!nl) {
         fprintf(stderr, "%s:%d: ponteiro p/ o nodo da lista nulo!\n", __func__,
-                __LINE__);
+            __LINE__);
         return;
     }
 

@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int *criaNum(int n)
+int* criaNum(int n)
 {
-    int *num;
+    int* num;
     num = malloc(sizeof(int));
 
     if (num)
@@ -17,15 +17,15 @@ int *criaNum(int n)
     return num;
 }
 
-void imprimeNum(void *num)
+void imprimeNum(void* num)
 {
     if (num)
-        printf("num = %p, *num = %d\n", num, *(int *)num);
+        printf("num = %p, *num = %d\n", num, *(int*)num);
 
     return;
 }
 
-void destroiNum(void **num)
+void destroiNum(void** num)
 {
     if (*num) {
         free(*num);

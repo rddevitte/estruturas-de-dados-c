@@ -5,12 +5,12 @@
 #ifndef LETRA_H
 #define LETRA_H
 
-void *criaLetra(char);
-void imprimeLetra(void *);
-void destroiLetra(void **);
-int comparaLetras(void *, void *);
-int condLetraEntreDeF(void *);
-int condLetraA(void *);
-int condLetraJ(void *);
+void* criaLetra(char);
+void imprimeLetra(void*);
+void destroiLetra(void**);
+int comparaLetras(void*, void*);
+int condLetraEntreDeF(void*);
+int condLetraA(void*);
+int condLetraJ(void*);
 
 #endif // LETRA_H

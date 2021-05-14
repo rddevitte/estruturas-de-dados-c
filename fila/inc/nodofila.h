@@ -8,15 +8,15 @@
 /** Estrutura do nodo da fila */
 struct nodoFila {
     /** Elemento a ser armazenado no nodo da fila */
-    void *elem;
+    void* elem;
     /** Ponteiro para o nodo anterior da fila */
-    struct nodoFila *ant;
+    struct nodoFila* ant;
 };
 
-typedef struct nodoFila *NodoFila;
+typedef struct nodoFila* NodoFila;
 
-NodoFila criaNodoFila(void *);
+NodoFila criaNodoFila(void*);
 
-void destroiNodoFila(NodoFila *, void (*)(void **));
+void destroiNodoFila(NodoFila*, void (*)(void**));
 
 #endif // NODOFILA_H

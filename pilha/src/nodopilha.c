@@ -12,7 +12,7 @@
  * ser o topo
  * @return O endereço alocado para o nodo da pilha
  */
-NodoPilha criaNodoPilha(void *elem, NodoPilha abaixo)
+NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo)
 {
     NodoPilha np;
 
@@ -21,11 +21,10 @@ NodoPilha criaNodoPilha(void *elem, NodoPilha abaixo)
     if (!np) {
         np->elem = elem;
         np->abaixo = abaixo;
-    }
-    else {
+    } else {
         fprintf(stderr,
-                "%s:%d: erro ao alocar espaço de memória para o nodo da pilha",
-                __func__, __LINE__);
+            "%s:%d: erro ao alocar espaço de memória para o nodo da pilha",
+            __func__, __LINE__);
     }
 
     return np;
@@ -37,11 +36,11 @@ NodoPilha criaNodoPilha(void *elem, NodoPilha abaixo)
  * @param destroiElem O ponteiro para uma função que desaloca o elemento
  * da memória armazenado no nodo da pilha
  */
-void destroiNodoPilha(NodoPilha *np, void (*destroiElem)(void **))
+void destroiNodoPilha(NodoPilha* np, void (*destroiElem)(void**))
 {
     if (!np) {
         fprintf(stderr, "%s:%d: ponteiro p/ o nodo da pilha nulo!\n", __func__,
-                __LINE__);
+            __LINE__);
         return;
     }
 

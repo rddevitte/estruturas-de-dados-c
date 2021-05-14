@@ -7,18 +7,18 @@
 
 struct fila;
 
-typedef struct fila *Fila;
+typedef struct fila* Fila;
 
 Fila criaFila(void);
 
-void enfileira(Fila, void *);
+void enfileira(Fila, void*);
 
-void *desenfileira(Fila);
+void* desenfileira(Fila);
 
-void percorre(Fila, void (*)(void *));
+void percorre(Fila, void (*)(void*));
 
 int tamanho(Fila);
 
-void destroiFila(Fila *, void (*)(void **));
+void destroiFila(Fila*, void (*)(void**));
 
 #endif // FILA_H

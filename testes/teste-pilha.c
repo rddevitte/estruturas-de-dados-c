@@ -10,7 +10,7 @@
 int main(void)
 {
     Pilha nums;
-    int *num;
+    int* num;
 
     setlocale(LC_ALL, "pt_BR.utf8");
 
@@ -53,7 +53,7 @@ int main(void)
     puts("Pilha:");
     percorre(nums, imprimeNum);
     printf("Tam. pilha: %d\n", tamanho(nums));
-    num = (int *)pop(nums);
+    num = (int*)pop(nums);
     printf("Núm. desempilhado: %d\n", *num);
     free(num);
     printf("Tam. pilha: %d\n", tamanho(nums));
@@ -64,7 +64,7 @@ int main(void)
     puts("Pilha:");
     percorre(nums, imprimeNum);
     printf("Tam. pilha: %d\n", tamanho(nums));
-    num = (int *)pop(nums);
+    num = (int*)pop(nums);
     printf("Núm. desempilhado: %d\n", *num);
     free(num);
     puts("Pilha:");

@@ -27,11 +27,10 @@ Fila criaFila(void)
     if (f) {
         f->frente = f->atras = NULL;
         f->tam = 0;
-    }
-    else {
+    } else {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
-                __func__, __LINE__);
+            "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
+            __func__, __LINE__);
     }
 
     return f;
@@ -42,7 +41,7 @@ Fila criaFila(void)
  * @param f A fila
  * @param elem O elemento a ser enfileirado
  */
-void enfileira(Fila f, void *elem)
+void enfileira(Fila f, void* elem)
 {
     NodoFila nf;
 
@@ -55,8 +54,8 @@ void enfileira(Fila f, void *elem)
 
     if (!nf) {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
-                __func__, __LINE__);
+            "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
+            __func__, __LINE__);
         return;
     }
 
@@ -80,10 +79,10 @@ void enfileira(Fila f, void *elem)
  * @param f A fila
  * @return O elemento desenfileirado
  */
-void *desenfileira(Fila f)
+void* desenfileira(Fila f)
 {
     NodoFila aux;
-    void *elem;
+    void* elem;
 
     if (!f) {
         fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
@@ -123,7 +122,7 @@ void *desenfileira(Fila f)
  * @param acessaElem Ponteiro para uma função de acesso e manipulação do
  * elemento
  */
-void percorre(Fila f, void (*acessaElem)(void *))
+void percorre(Fila f, void (*acessaElem)(void*))
 {
     NodoFila aux;
 
@@ -139,7 +138,7 @@ void percorre(Fila f, void (*acessaElem)(void *))
 
     if (acessaElem == NULL) {
         fprintf(stderr, "%s:%d: parâmetro acessaElem nulo\n", __func__,
-                __LINE__);
+            __LINE__);
         return;
     }
 
@@ -168,7 +167,7 @@ int tamanho(Fila f)
  * @param f O ponteiro para a fila
  * @param destroiElem O ponteiro para a função que desaloca o elemento da fila
  */
-void destroiFila(Fila *f, void (*destroiElem)(void **))
+void destroiFila(Fila* f, void (*destroiElem)(void**))
 {
     NodoFila aux;
 

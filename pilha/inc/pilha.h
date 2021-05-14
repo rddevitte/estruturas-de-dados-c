@@ -7,18 +7,18 @@
 
 struct pilha;
 
-typedef struct pilha *Pilha;
+typedef struct pilha* Pilha;
 
 Pilha criaPilha(void);
 
-void push(Pilha, void *);
+void push(Pilha, void*);
 
-void *pop(Pilha);
+void* pop(Pilha);
 
-void percorre(Pilha, void (*)(void *));
+void percorre(Pilha, void (*)(void*));
 
 int tamanho(Pilha);
 
-void destroiPilha(Pilha *, void (*)(void **));
+void destroiPilha(Pilha*, void (*)(void**));
 
 #endif // PILHA_H

@@ -5,8 +5,8 @@
 #ifndef NUMS_H
 #define NUMS_H
 
-int *criaNum(int);
-void imprimeNum(void *);
-void destroiNum(void **);
+int* criaNum(int);
+void imprimeNum(void*);
+void destroiNum(void**);
 
 #endif // NUMS_H

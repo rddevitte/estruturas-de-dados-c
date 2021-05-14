@@ -8,15 +8,15 @@
 /** Estrutura do nodo pilha */
 struct nodoPilha {
     /** Elemento a ser armazenado no topo da pilha */
-    void *elem;
+    void* elem;
     /** Ponteiro para o nodo abaixo dele */
-    struct nodoPilha *abaixo;
+    struct nodoPilha* abaixo;
 };
 
-typedef struct nodoPilha *NodoPilha;
+typedef struct nodoPilha* NodoPilha;
 
-NodoPilha criaNodoPilha(void *, NodoPilha);
+NodoPilha criaNodoPilha(void*, NodoPilha);
 
-void destroiNodoPilha(NodoPilha *, void (*)(void **));
+void destroiNodoPilha(NodoPilha*, void (*)(void**));
 
 #endif // NODOPILHA_H

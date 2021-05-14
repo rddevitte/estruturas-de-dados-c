@@ -28,11 +28,10 @@ Pilha criaPilha(void)
     if (p) {
         p->topo = NULL;
         p->tam = 0;
-    }
-    else {
+    } else {
         fprintf(stderr,
-                "%s:%d: erro ao alocar espaço de memória para a pilha\n",
-                __func__, __LINE__);
+            "%s:%d: erro ao alocar espaço de memória para a pilha\n",
+            __func__, __LINE__);
     }
 
     return p;
@@ -43,7 +42,7 @@ Pilha criaPilha(void)
  * @param p Ponteiro para a pilha
  * @param elem Elemento a ser empilhado
  */
-void push(Pilha p, void *elem)
+void push(Pilha p, void* elem)
 {
     NodoPilha np;
 
@@ -67,9 +66,9 @@ void push(Pilha p, void *elem)
  * @param p A pilha
  * @return o elemento do topo da pilha, desempilhado
  */
-void *pop(Pilha p)
+void* pop(Pilha p)
 {
-    void *elem;
+    void* elem;
     NodoPilha novoTopo;
 
     if (!p) {
@@ -98,7 +97,7 @@ void *pop(Pilha p)
  * @param acessaElem O ponteiro para uma função a ser aplicada ao elemento do
  * nodo empilhado
  */
-void percorre(Pilha p, void (*acessaElem)(void *))
+void percorre(Pilha p, void (*acessaElem)(void*))
 {
     NodoPilha aux;
 
@@ -114,7 +113,7 @@ void percorre(Pilha p, void (*acessaElem)(void *))
 
     if (!acessaElem) {
         fprintf(stderr, "%s:%d: ponteiro p/ a função acessaElem() nulo!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -144,7 +143,7 @@ int tamanho(Pilha p)
  * @param destroiElem Ponteiro para a função que desaloca o elemento do
  * nodo
  */
-void destroiPilha(Pilha *p, void (*destroiElem)(void **))
+void destroiPilha(Pilha* p, void (*destroiElem)(void**))
 {
     NodoPilha aux;
 

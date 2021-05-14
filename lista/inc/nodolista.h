@@ -8,15 +8,15 @@
 /** Estrutura do nodo da lista */
 struct nodoLista {
     /** Ponteiro para o elemento armazenado no nodo */
-    void *elem;
+    void* elem;
     /** Ponteiro para os nodos próximo e anterior a ele */
     struct nodoLista *ant, *prox;
 };
 
-typedef struct nodoLista *NodoLista;
+typedef struct nodoLista* NodoLista;
 
-NodoLista criaNodoLista(void *, NodoLista, NodoLista);
+NodoLista criaNodoLista(void*, NodoLista, NodoLista);
 
-void destroiNodoLista(NodoLista *, void (*)(void **));
+void destroiNodoLista(NodoLista*, void (*)(void**));
 
 #endif // NODOLISTA_H

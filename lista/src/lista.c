@@ -32,11 +32,10 @@ Lista criaLista(void)
         l->inicio = NULL;
         l->fim = NULL;
         l->tam = 0;
-    }
-    else {
+    } else {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para a lista!\n",
-                __func__, __LINE__);
+            "%s:%d: não foi possível alocar memória para a lista!\n",
+            __func__, __LINE__);
     }
 
     return l;
@@ -47,7 +46,7 @@ Lista criaLista(void)
  * @param l A lista
  * @param elem O elemento a ser inserido
  */
-void insereInicio(Lista l, void *elem)
+void insereInicio(Lista l, void* elem)
 {
     NodoLista nl;
 
@@ -60,9 +59,9 @@ void insereInicio(Lista l, void *elem)
 
     if (!nl) {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para o novo nodo da \
+            "%s:%d: não foi possível alocar memória para o novo nodo da \
                 lista!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -102,7 +101,7 @@ void insereInicio(Lista l, void *elem)
  * @param l A lista
  * @param elem O elemento a ser inserido
  */
-void insereFim(Lista l, void *elem)
+void insereFim(Lista l, void* elem)
 {
     NodoLista nl;
 
@@ -115,9 +114,9 @@ void insereFim(Lista l, void *elem)
 
     if (!nl) {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para o novo nodo da \
+            "%s:%d: não foi possível alocar memória para o novo nodo da \
                 lista!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -158,7 +157,7 @@ void insereFim(Lista l, void *elem)
  * @param pos A posição da lista onde o elemento será inserido
  * @param elem O elemento a ser inserido
  */
-void inserePos(Lista l, int pos, void *elem)
+void inserePos(Lista l, int pos, void* elem)
 {
     NodoLista nl, aux;
 
@@ -169,7 +168,7 @@ void inserePos(Lista l, int pos, void *elem)
 
     if (pos < 0 || pos > l->tam) {
         fprintf(stderr, "%s:%d: posição %d inválida!\n", __func__, __LINE__,
-                pos);
+            pos);
 
         if (elem)
             free(elem);
@@ -195,9 +194,9 @@ void inserePos(Lista l, int pos, void *elem)
 
     if (!nl) {
         fprintf(stderr,
-                "%s:%d: não foi possível alocar memória para o novo nodo da \
+            "%s:%d: não foi possível alocar memória para o novo nodo da \
                 lista!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -218,7 +217,7 @@ void inserePos(Lista l, int pos, void *elem)
  * @param comparaElems Ponteiro para a função que compara o elem. a ser inserido
  * com o elem. do nodo seguinte ao atual (aux)
  */
-void insereOrd(Lista l, void *elem, int (*comparaElems)(void *, void *))
+void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
 {
     NodoLista nl, aux;
     int c, c2;
@@ -230,7 +229,7 @@ void insereOrd(Lista l, void *elem, int (*comparaElems)(void *, void *))
 
     if (!comparaElems) {
         fprintf(stderr, "%s:%d: ponteiro p/ função comparaElems nulo!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -280,8 +279,8 @@ void insereOrd(Lista l, void *elem, int (*comparaElems)(void *, void *))
             // sai da função
             if (aux == l->fim) {
                 fprintf(stderr,
-                        "%s:%d: não foi possível inserir o elemento na lista.",
-                        __func__, __LINE__);
+                    "%s:%d: não foi possível inserir o elemento na lista.",
+                    __func__, __LINE__);
                 return;
             }
 
@@ -296,9 +295,9 @@ void insereOrd(Lista l, void *elem, int (*comparaElems)(void *, void *))
         // considera valor inválido!
         else {
             fprintf(stderr,
-                    "%s:%d: valor retornado de comparaElems() inválido! \
+                "%s:%d: valor retornado de comparaElems() inválido! \
 (Deve ser -1, 0 ou 1.)\n",
-                    __func__, __LINE__);
+                __func__, __LINE__);
             return;
         }
     }
@@ -307,7 +306,7 @@ void insereOrd(Lista l, void *elem, int (*comparaElems)(void *, void *))
     else {
         fprintf(stderr, "%s:%d: valor retornado de comparaElems() inválido! \
 (Deve ser -1, 0 ou 1.)\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -333,7 +332,7 @@ int tamanho(Lista l)
  * @param l A lista
  * @return o (endereço do) elemento do nodo do início da lista
  */
-void *elemInicio(Lista l)
+void* elemInicio(Lista l)
 {
     if (!l) {
         fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
@@ -353,7 +352,7 @@ void *elemInicio(Lista l)
  * @param l A lista
  * @return o (endereço do) elemento do nodo do fim da lista
  */
-void *elemFim(Lista l)
+void* elemFim(Lista l)
 {
     if (!l) {
         fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
@@ -374,7 +373,7 @@ void *elemFim(Lista l)
  * @param pos A posição do nodo da lista
  * @return o (endereço do) elemento do nodo da dada posição da lista
  */
-void *elemPos(Lista l, int pos)
+void* elemPos(Lista l, int pos)
 {
     NodoLista aux;
 
@@ -390,7 +389,7 @@ void *elemPos(Lista l, int pos)
 
     if (pos < 0 || pos > l->tam - 1) {
         fprintf(stderr, "%s:%d: posição %d inválida!\n", __func__, __LINE__,
-                pos);
+            pos);
         return NULL;
     }
 
@@ -414,7 +413,7 @@ void *elemPos(Lista l, int pos)
  * @param acessaElem O ponteiro para a função a ser aplicada no elem. do nodo da
  * lista
  */
-void percorre(Lista l, void (*acessaElem)(void *))
+void percorre(Lista l, void (*acessaElem)(void*))
 {
     NodoLista aux;
 
@@ -430,7 +429,7 @@ void percorre(Lista l, void (*acessaElem)(void *))
 
     if (!acessaElem) {
         fprintf(stderr, "%s:%d: ponteiro p/ função acessaElem() nulo!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -454,7 +453,7 @@ void percorre(Lista l, void (*acessaElem)(void *))
  * @param acessaElem O ponteiro para a função a ser aplicada no elem. do nodo da
  * lista
  */
-void percorreInv(Lista l, void (*acessaElem)(void *))
+void percorreInv(Lista l, void (*acessaElem)(void*))
 {
     NodoLista aux;
 
@@ -470,7 +469,7 @@ void percorreInv(Lista l, void (*acessaElem)(void *))
 
     if (!acessaElem) {
         fprintf(stderr, "%s:%d: ponteiro p/ função acessaElem() nulo!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return;
     }
 
@@ -493,7 +492,7 @@ void percorreInv(Lista l, void (*acessaElem)(void *))
  * @param removeElem O ponteiro para a função que desaloca o elemento
  * do nodo a ser removido
  */
-void removeInicio(Lista l, void (*removeElem)(void **))
+void removeInicio(Lista l, void (*removeElem)(void**))
 {
     NodoLista aux;
 
@@ -529,7 +528,7 @@ void removeInicio(Lista l, void (*removeElem)(void **))
  * @param removeElem O ponteiro para a função que desaloca o elemento
  * do nodo a ser removido
  */
-void removeFim(Lista l, void (*removeElem)(void **))
+void removeFim(Lista l, void (*removeElem)(void**))
 {
     NodoLista aux;
 
@@ -566,7 +565,7 @@ void removeFim(Lista l, void (*removeElem)(void **))
  * @param removeElem O ponteiro para a função que desaloca o elemento
  * do nodo a ser removido
  */
-void removePos(Lista l, int pos, void (*removeElem)(void **))
+void removePos(Lista l, int pos, void (*removeElem)(void**))
 {
     NodoLista aux;
 
@@ -616,7 +615,7 @@ void removePos(Lista l, int pos, void (*removeElem)(void **))
  * @param removeElem Desaloca o elemento se obedece à condição
  * @return A quantidade de nodos removidos
  */
-int removeCond(Lista l, int (*verifElem)(void *), void (*removeElem)(void **))
+int removeCond(Lista l, int (*verifElem)(void*), void (*removeElem)(void**))
 {
     NodoLista aux, del;
     int r;
@@ -633,7 +632,7 @@ int removeCond(Lista l, int (*verifElem)(void *), void (*removeElem)(void **))
 
     if (!verifElem) {
         fprintf(stderr, "%s:%d: ponteiro p/ função verifElem() nulo!\n",
-                __func__, __LINE__);
+            __func__, __LINE__);
         return -1;
     }
 
@@ -692,13 +691,13 @@ int removeCond(Lista l, int (*verifElem)(void *), void (*removeElem)(void **))
  * @param destroiElem O ponteiro para uma função que desaloca
  * o elemento do nodo da lista
  */
-void destroiLista(Lista *l, void (*destroiElem)(void **))
+void destroiLista(Lista* l, void (*destroiElem)(void**))
 {
     NodoLista aux;
 
     if (!l) {
         fprintf(stderr, "%s:%d: ponteiro p/ a lista nulo!\n", __func__,
-                __LINE__);
+            __LINE__);
         return;
     }
 
