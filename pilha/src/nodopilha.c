@@ -1,17 +1,11 @@
 /**
- * nodopilha.c - Definição das funções de criação e destruição do nodo da pilha.
+ * @file nodopilha.c
+ * @brief Definição das funções de criação e destruição do nodo da pilha.
  */
 #include "../inc/nodopilha.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * Aloca (cria) um novo nodo da pilha.
- * @param elem O elemento a ser empilhado
- * @param abaixo O nodo do topo da pilha que estará abaixo dele após o novo nodo
- * ser o topo
- * @return O endereço alocado para o nodo da pilha
- */
 NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo)
 {
     NodoPilha np;
@@ -30,12 +24,6 @@ NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo)
     return np;
 }
 
-/**
- * Desaloca ("destroi") o nodo da pilha.
- * @param np O endereço do nodo da pilha na memória
- * @param destroiElem O ponteiro para uma função que desaloca o elemento
- * da memória armazenado no nodo da pilha
- */
 void destroiNodoPilha(NodoPilha* np, void (*destroiElem)(void**))
 {
     if (!np) {

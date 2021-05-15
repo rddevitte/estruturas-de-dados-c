@@ -1,5 +1,6 @@
 /**
- * nums.c - Definição das funções auxiliares para criação, impressão e
+ * @file nums.c
+ * @brief Definição das funções auxiliares para criação, impressão e
  * desalocação dinâmica de inteiros. Usado nos testes da pilha e da fila.
  */
 #include "nums.h"

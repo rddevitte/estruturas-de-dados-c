@@ -1,5 +1,6 @@
 /**
- * lista.c - Definição da estrutura e das funções da lista duplamente encadeada
+ * @file lista.c
+ * @brief Definição da estrutura e das funções da lista duplamente encadeada
  * circular.
  */
 
@@ -18,10 +19,6 @@ struct lista {
     int tam;
 };
 
-/**
- * Cria (aloca) uma lista vazia, sem nenhum nodo.
- * @return ponteiro para a lista alocada
- */
 Lista criaLista(void)
 {
     Lista l;
@@ -41,11 +38,6 @@ Lista criaLista(void)
     return l;
 }
 
-/**
- * Insere um elemento no início da lista.
- * @param l A lista
- * @param elem O elemento a ser inserido
- */
 void insereInicio(Lista l, void* elem)
 {
     NodoLista nl;
@@ -96,11 +88,6 @@ void insereInicio(Lista l, void* elem)
     return;
 }
 
-/**
- * Insere um elemento no final da lista.
- * @param l A lista
- * @param elem O elemento a ser inserido
- */
 void insereFim(Lista l, void* elem)
 {
     NodoLista nl;
@@ -151,12 +138,6 @@ void insereFim(Lista l, void* elem)
     return;
 }
 
-/**
- * Insere um elemento no início da lista.
- * @param l A lista
- * @param pos A posição da lista onde o elemento será inserido
- * @param elem O elemento a ser inserido
- */
 void inserePos(Lista l, int pos, void* elem)
 {
     NodoLista nl, aux;
@@ -208,15 +189,6 @@ void inserePos(Lista l, int pos, void* elem)
     return;
 }
 
-/**
- * Insere um elemento na lista de forma ordenada, obedecendo à saída da função
- * comparaElems. comparaElems() deve retornar -1 se o 1º elem é menor que o 2º,
- * 1 se é maior, ou 0 se ambos são iguais.
- * @param l A lista
- * @param elem O elemento a ser inserido
- * @param comparaElems Ponteiro para a função que compara o elem. a ser inserido
- * com o elem. do nodo seguinte ao atual (aux)
- */
 void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
 {
     NodoLista nl, aux;
@@ -313,10 +285,6 @@ void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
     return;
 }
 
-/**
- * Retorna o tamanho da lista (núm. de elementos).
- * @return o tamanho da lista
- */
 int tamanho(Lista l)
 {
     if (!l) {
@@ -327,11 +295,6 @@ int tamanho(Lista l)
     return l->tam;
 }
 
-/**
- * Retorna o (endereço do) elemento do nodo do início da lista.
- * @param l A lista
- * @return o (endereço do) elemento do nodo do início da lista
- */
 void* elemInicio(Lista l)
 {
     if (!l) {
@@ -347,11 +310,6 @@ void* elemInicio(Lista l)
     return l->inicio->elem;
 }
 
-/**
- * Retorna o (endereço do) elemento do nodo do fim da lista.
- * @param l A lista
- * @return o (endereço do) elemento do nodo do fim da lista
- */
 void* elemFim(Lista l)
 {
     if (!l) {
@@ -367,12 +325,6 @@ void* elemFim(Lista l)
     return l->fim->elem;
 }
 
-/**
- * Retorna o (endereço do) elemento do nodo da posição 'pos' da lista.
- * @param l A lista
- * @param pos A posição do nodo da lista
- * @return o (endereço do) elemento do nodo da dada posição da lista
- */
 void* elemPos(Lista l, int pos)
 {
     NodoLista aux;
@@ -406,13 +358,6 @@ void* elemPos(Lista l, int pos)
     return aux->elem;
 }
 
-/**
- * Percorre (traverse) os nodos do início ao fim da lista, aplicando a função
- * acessaElem() nos elems. de cada nodo.
- * @param l A lista
- * @param acessaElem O ponteiro para a função a ser aplicada no elem. do nodo da
- * lista
- */
 void percorre(Lista l, void (*acessaElem)(void*))
 {
     NodoLista aux;
@@ -446,13 +391,6 @@ void percorre(Lista l, void (*acessaElem)(void*))
     return;
 }
 
-/**
- * Percorre (traverse) os nodos em ordem inversa, do fim ao início da lista,
- * aplicando a função acessaElem() nos elems. de cada nodo.
- * @param l A lista
- * @param acessaElem O ponteiro para a função a ser aplicada no elem. do nodo da
- * lista
- */
 void percorreInv(Lista l, void (*acessaElem)(void*))
 {
     NodoLista aux;
@@ -486,12 +424,6 @@ void percorreInv(Lista l, void (*acessaElem)(void*))
     return;
 }
 
-/**
- * Remove o nodo do início da lista.
- * @param l A lista
- * @param removeElem O ponteiro para a função que desaloca o elemento
- * do nodo a ser removido
- */
 void removeInicio(Lista l, void (*removeElem)(void**))
 {
     NodoLista aux;
@@ -522,12 +454,6 @@ void removeInicio(Lista l, void (*removeElem)(void**))
     return;
 }
 
-/**
- * Remove o nodo do fim da lista.
- * @param l A lista
- * @param removeElem O ponteiro para a função que desaloca o elemento
- * do nodo a ser removido
- */
 void removeFim(Lista l, void (*removeElem)(void**))
 {
     NodoLista aux;
@@ -546,7 +472,6 @@ void removeFim(Lista l, void (*removeElem)(void**))
         destroiNodoLista(&(l->fim), removeElem);
         l->inicio = l->fim = NULL;
     } else {
-        /* ... resto do algoritmo aqui ... */
         aux = l->fim->ant;
         destroiNodoLista(&(l->fim), removeElem);
         l->fim = aux;
@@ -559,12 +484,6 @@ void removeFim(Lista l, void (*removeElem)(void**))
     return;
 }
 
-/**
- * Remove o nodo da posição 'pos' da lista.
- * @param l A lista
- * @param removeElem O ponteiro para a função que desaloca o elemento
- * do nodo a ser removido
- */
 void removePos(Lista l, int pos, void (*removeElem)(void**))
 {
     NodoLista aux;
@@ -605,16 +524,6 @@ void removePos(Lista l, int pos, void (*removeElem)(void**))
     return;
 }
 
-/**
- * Remove um ou mais nodos da lista e seus elementos, dependendo da saída
- * da função verifElem().
- * Se a função verifElem(elem) retorna 1, o elemento e seu nodo é removido;
- * se retorna 0 ou qualquer outro valor, mantém o elemento na lista.
- * @param l A lista
- * @param acessaElem O elemento a ser verificada a condição
- * @param removeElem Desaloca o elemento se obedece à condição
- * @return A quantidade de nodos removidos
- */
 int removeCond(Lista l, int (*verifElem)(void*), void (*removeElem)(void**))
 {
     NodoLista aux, del;
@@ -685,12 +594,6 @@ int removeCond(Lista l, int (*verifElem)(void*), void (*removeElem)(void**))
     return r;
 }
 
-/**
- * "Destroi" (desaloca) a lista e seus elementos.
- * @param l A lista
- * @param destroiElem O ponteiro para uma função que desaloca
- * o elemento do nodo da lista
- */
 void destroiLista(Lista* l, void (*destroiElem)(void**))
 {
     NodoLista aux;

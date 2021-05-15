@@ -1,24 +1,58 @@
 /**
- * fila.h - Declaração das funções de criação, operações e destruição da
+ * @file fila.h
+ * @brief Declaração das funções de criação, operações e destruição da
  * estrutura fila.
  */
 #ifndef FILA_H
 #define FILA_H
 
+/** Declaração da estrutura da fila */
 struct fila;
 
+/** Def. de tipo Fila */
 typedef struct fila* Fila;
 
+/**
+ * Cria uma fila vazia.
+ * @return o endereço de memória alocado para a fila
+ */
 Fila criaFila(void);
 
-void enfileira(Fila, void*);
+/**
+ * Inclui (enfileira) um elemento no final da fila.
+ * @param f A fila
+ * @param elem O elemento a ser enfileirado
+ */
+void enfileira(Fila f, void* elem);
 
-void* desenfileira(Fila);
+/**
+ * Retira (desenfileira) um elemento do início da fila.
+ * @param f A fila
+ * @return O elemento desenfileirado
+ */
+void* desenfileira(Fila f);
 
-void percorre(Fila, void (*)(void*));
+/**
+ * Percorre (traverse) os nodos da fila, do início ao fim, aplicando a função
+ * acessaElem a cada elemento.
+ * @param f A fila
+ * @param acessaElem Ponteiro para uma função de acesso e manipulação do
+ * elemento
+ */
+void percorre(Fila f, void (*acessaElem)(void*));
 
-int tamanho(Fila);
+/**
+ * Retorna o tamanho da fila (núm. de elementos enfileirados).
+ * @param f A fila
+ * @return Tamanho da fila
+ */
+int tamanho(Fila f);
 
-void destroiFila(Fila*, void (*)(void**));
+/**
+ * Desaloca ("destroi") a fila e seus elementos.
+ * @param f O ponteiro para a fila
+ * @param destroiElem O ponteiro para a função que desaloca o elemento da fila
+ */
+void destroiFila(Fila* f, void (*destroiElem)(void**));
 
 #endif // FILA_H

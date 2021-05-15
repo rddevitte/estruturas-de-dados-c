@@ -1,5 +1,6 @@
 /**
- * teste-fila.c - Testa a estrutura de fila e suas operações.
+ * @file teste-fila.c
+ * @brief Testa a estrutura de fila e suas operações.
  */
 #include "../fila/inc/fila.h"
 #include "./nums/nums.h"

@@ -1,5 +1,6 @@
 /**
- * nums.h - Declaração das funções auxiliares para criação, impressão e
+ * @file letra.h
+ * @brief Declaração das funções auxiliares para criação, impressão e
  * desalocação dinâmica de caracteres. Usado no teste da lista.
  */
 #ifndef LETRA_H

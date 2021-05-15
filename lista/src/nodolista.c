@@ -1,16 +1,11 @@
 /**
- * nodolista.c - Definição das funções do nodo da lista.
+ * @file nodolista.c
+ * @brief Definição das funções do nodo da lista.
  */
 #include "../inc/nodolista.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * Cria (aloca) um nodo da lista.
- * @param elem O elemento a ser armazenado no nodo
- * @param ant Ponteiro para o nodo anterior
- * @param prox Ponteiro para o próx. nodo
- */
 NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 {
     NodoLista nl;
@@ -31,12 +26,6 @@ NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
     return nl;
 }
 
-/**
- * "Destroi" (desaloca) um nodo da lista.
- * @param lista O ponteiro para o nodo da lista
- * @param destroiElem O ponteiro para uma função que desaloca o elemento
- * armazenado no nodo
- */
 void destroiNodoLista(NodoLista* nl, void (*destroiElem)(void**))
 {
     if (!nl) {

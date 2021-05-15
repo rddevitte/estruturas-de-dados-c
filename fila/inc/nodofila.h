@@ -1,5 +1,6 @@
 /**
- * nodofila.h - Declaração da estrutura e das funções de criação e destruição do
+ * @file nodofila.h
+ * @brief Declaração da estrutura e das funções de criação e destruição do
  * nodo da fila.
  */
 #ifndef NODOFILA_H
@@ -13,10 +14,22 @@ struct nodoFila {
     struct nodoFila* ant;
 };
 
+/** Def. de tipo NodoFila */
 typedef struct nodoFila* NodoFila;
 
-NodoFila criaNodoFila(void*);
+/**
+ * Cria um novo nodo da fila.
+ * @param elem O elemento a ser armazenado no nodo
+ * @return O endereço para o nodo fila alocado na memória
+ */
+NodoFila criaNodoFila(void* elem);
 
-void destroiNodoFila(NodoFila*, void (*)(void**));
+/**
+ * Destroi (desaloca) o nodo da fila da memória.
+ * @param nf O ponteiro para o nodo da fila
+ * @param destroiElem O ponteiro para uma função que desaloca o elemento
+ * armazenado da memória
+ */
+void destroiNodoFila(NodoFila* nf, void (*destroiElem)(void**));
 
 #endif // NODOFILA_H

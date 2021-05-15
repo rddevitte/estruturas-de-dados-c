@@ -1,5 +1,6 @@
 /**
- * teste-pilha.c - Testa a estrutura de pilha e suas operações.
+ * @file teste-pilha.c
+ * @brief Testa a estrutura de pilha e suas operações.
  */
 #include "../pilha/inc/pilha.h"
 #include "./nums/nums.h"

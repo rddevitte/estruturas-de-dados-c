@@ -1,5 +1,6 @@
 /**
- * nums.h - Declaração das funções auxiliares para criação, impressão e
+ * @file nums.h
+ * @brief Declaração das funções auxiliares para criação, impressão e
  * desalocação dinâmica de inteiros. Usado nos testes da pilha e da fila.
  */
 #ifndef NUMS_H

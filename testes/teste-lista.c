@@ -1,5 +1,6 @@
 /**
- * teste-lista.c - Testa a estrutura da lista e suas operações.
+ * @file teste-lista.c
+ * @brief Testa a estrutura da lista e suas operações.
  */
 #include "../lista/inc/lista.h"
 #include "./letra/letra.h"

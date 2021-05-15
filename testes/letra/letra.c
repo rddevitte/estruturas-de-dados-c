@@ -1,5 +1,6 @@
 /**
- * letra.c - Definição das funções auxiliares para criação, impressão e
+ * @file letra.c
+ * @brief Definição das funções auxiliares para criação, impressão e
  * desalocação dinâmica de caracteres. Usado no teste da lista.
  */
 #include "letra.h"

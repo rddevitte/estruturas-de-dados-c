@@ -1,5 +1,6 @@
 /**
- * pilha.c - Definição das funções de criação, operações e destruição da
+ * @file pilha.c
+ * @brief Definição das funções de criação, operações e destruição da
  * estrutura pilha.
  */
 #include "../inc/pilha.h"
@@ -15,10 +16,6 @@ struct pilha {
     int tam;
 };
 
-/**
- * Cria (aloca) nova pilha.
- * @return O endereço de memória alocado para a nova pilha
- */
 Pilha criaPilha(void)
 {
     Pilha p;
@@ -37,11 +34,6 @@ Pilha criaPilha(void)
     return p;
 }
 
-/**
- * Empilha (push) um elemento na pilha.
- * @param p Ponteiro para a pilha
- * @param elem Elemento a ser empilhado
- */
 void push(Pilha p, void* elem)
 {
     NodoPilha np;
@@ -61,11 +53,6 @@ void push(Pilha p, void* elem)
     return;
 }
 
-/**
- * Desempilha (pop) um elemento da pilha.
- * @param p A pilha
- * @return o elemento do topo da pilha, desempilhado
- */
 void* pop(Pilha p)
 {
     void* elem;
@@ -90,13 +77,6 @@ void* pop(Pilha p)
     return elem;
 }
 
-/**
- * Percorre ("traverse") os nodos da pilha, do topo para a base,
- * e aplica a função acessaElem a cada elemento do nodo da pilha.
- * @param p A pilha
- * @param acessaElem O ponteiro para uma função a ser aplicada ao elemento do
- * nodo empilhado
- */
 void percorre(Pilha p, void (*acessaElem)(void*))
 {
     NodoPilha aux;
@@ -123,10 +103,6 @@ void percorre(Pilha p, void (*acessaElem)(void*))
     return;
 }
 
-/**
- * Retorna o tamanho da pilha (núm. de elementos empilhados).
- * @return Tamanho da pilha
- */
 int tamanho(Pilha p)
 {
     if (!p) {
@@ -137,12 +113,6 @@ int tamanho(Pilha p)
     return p->tam;
 }
 
-/**
- * Desaloca ("destroi") os elementos da pilha e a pilha em si.
- * @param p Ponteiro para a pilha
- * @param destroiElem Ponteiro para a função que desaloca o elemento do
- * nodo
- */
 void destroiPilha(Pilha* p, void (*destroiElem)(void**))
 {
     NodoPilha aux;
