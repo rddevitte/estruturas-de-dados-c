@@ -11,7 +11,7 @@ void* criaLetra(char c)
 {
     char* pc;
 
-    pc = malloc(sizeof(char));
+    pc = (char*)malloc(sizeof(char));
 
     if (pc) {
         *pc = c;

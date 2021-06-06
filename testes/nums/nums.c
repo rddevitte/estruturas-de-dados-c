@@ -10,7 +10,7 @@
 int* criaNum(int n)
 {
     int* num;
-    num = malloc(sizeof(int));
+    num = (int*)malloc(sizeof(int));
 
     if (num)
         *num = n;

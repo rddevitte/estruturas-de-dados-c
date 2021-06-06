@@ -11,7 +11,7 @@ NodoFila criaNodoFila(void* elem)
 {
     NodoFila nf;
 
-    nf = malloc(sizeof(struct nodoFila));
+    nf = (NodoFila)malloc(sizeof(struct nodoFila));
 
     if (nf) {
         nf->elem = elem;

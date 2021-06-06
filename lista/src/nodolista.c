@@ -10,7 +10,7 @@ NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 {
     NodoLista nl;
 
-    nl = malloc(sizeof(struct nodoLista));
+    nl = (NodoLista)malloc(sizeof(struct nodoLista));
 
     if (nl) {
         nl->elem = elem;

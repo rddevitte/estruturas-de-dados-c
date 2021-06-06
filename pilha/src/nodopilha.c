@@ -10,14 +10,14 @@ NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo)
 {
     NodoPilha np;
 
-    np = malloc(sizeof(struct nodoPilha));
+    np = (NodoPilha)malloc(sizeof(struct nodoPilha));
 
-    if (!np) {
+    if (np) {
         np->elem = elem;
         np->abaixo = abaixo;
     } else {
         fprintf(stderr,
-            "%s:%d: erro ao alocar espaço de memória para o nodo da pilha",
+            "%s:%d: erro ao alocar espaço de memória para o nodo da pilha\n",
             __func__, __LINE__);
     }
 

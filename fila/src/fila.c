@@ -19,7 +19,7 @@ Fila criaFila(void)
 {
     Fila f;
 
-    f = malloc(sizeof(struct fila));
+    f = (Fila)malloc(sizeof(struct fila));
 
     if (f) {
         f->frente = f->atras = NULL;

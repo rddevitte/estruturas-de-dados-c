@@ -20,7 +20,7 @@ Pilha criaPilha(void)
 {
     Pilha p;
 
-    p = malloc(sizeof(struct pilha));
+    p = (Pilha)malloc(sizeof(struct pilha));
 
     if (p) {
         p->topo = NULL;

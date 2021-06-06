@@ -23,7 +23,7 @@ Lista criaLista(void)
 {
     Lista l;
 
-    l = malloc(sizeof(struct lista));
+    l = (Lista)malloc(sizeof(struct lista));
 
     if (l) {
         l->inicio = NULL;
