@@ -3,9 +3,11 @@
  * @brief Definição das funções auxiliares para criação, impressão e
  * desalocação dinâmica de inteiros. Usado nos testes da pilha e da fila.
  */
-#include "nums.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "nums.h"
 
 int* criaNum(int n)
 {
@@ -21,7 +23,7 @@ int* criaNum(int n)
 void imprimeNum(void* num)
 {
     if (num)
-        printf("num = %p, *num = %d\n", num, *(int*)num);
+        PRINT_DBG("num = %p, *num = %d", num, *(int*)num);
 
     return;
 }

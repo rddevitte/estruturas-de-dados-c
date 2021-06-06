@@ -2,11 +2,13 @@
  * @file teste-fila.c
  * @brief Testa a estrutura de fila e suas operações.
  */
-#include "../fila/inc/fila.h"
-#include "./nums/nums.h"
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../common/macros.h"
+#include "../fila/inc/fila.h"
+#include "./nums/nums.h"
 
 int main(void)
 {
@@ -21,7 +23,7 @@ int main(void)
     enfileira(nums, NULL);
     desenfileira(nums);
     percorre(nums, NULL);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
     destroiFila(NULL, NULL);
     destroiFila(&nums, NULL);
 
@@ -31,13 +33,13 @@ int main(void)
     nums = criaFila();
 
     if (!nums) {
-        fprintf(stderr, "Erro ao criar fila!\n");
+        PRINT_ERR("Erro ao criar fila!");
         return 1;
     }
 
     desenfileira(nums);
     percorre(nums, NULL);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
     destroiFila(&nums, NULL);
 
     putchar('\n');
@@ -46,31 +48,31 @@ int main(void)
     nums = criaFila();
 
     if (!nums) {
-        fprintf(stderr, "Erro ao criar fila!\n");
+        PRINT_ERR("Erro ao criar fila!");
         return 1;
     }
 
     enfileira(nums, criaNum(1));
-    puts("Fila:");
+    PRINT_DBG("Fila:");
     percorre(nums, imprimeNum);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
     num = (int*)desenfileira(nums);
-    printf("Núm. desenfileirado: %d\n", *num);
+    PRINT_DBG("Núm. desenfileirado: %d", *num);
     free(num);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
 
     enfileira(nums, criaNum(2));
     enfileira(nums, criaNum(3));
     enfileira(nums, criaNum(4));
-    puts("Fila:");
+    PRINT_DBG("Fila:");
     percorre(nums, imprimeNum);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
     num = (int*)desenfileira(nums);
-    printf("Núm. desenfileirado: %d\n", *num);
+    PRINT_DBG("Núm. desenfileirado: %d", *num);
     free(num);
-    puts("Fila:");
+    PRINT_DBG("Fila:");
     percorre(nums, imprimeNum);
-    printf("Tam. fila: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. fila: %d", tamanho(nums));
 
     putchar('\n');
 
@@ -78,7 +80,7 @@ int main(void)
     destroiFila(&nums, destroiNum);
 
     if (!nums)
-        puts("Fila destruída.");
+        PRINT_DBG("Fila destruída.");
 
     return 0;
 }

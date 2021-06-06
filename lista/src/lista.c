@@ -3,11 +3,12 @@
  * @brief Definição da estrutura e das funções da lista duplamente encadeada
  * circular.
  */
-
-#include "../inc/lista.h"
-#include "../inc/nodolista.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "../inc/lista.h"
+#include "../inc/nodolista.h"
 
 /** Estrutura da lista */
 struct lista {
@@ -30,9 +31,7 @@ Lista criaLista(void)
         l->fim = NULL;
         l->tam = 0;
     } else {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para a lista!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para a lista!");
     }
 
     return l;
@@ -43,17 +42,14 @@ void insereInicio(Lista l, void* elem)
     NodoLista nl;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     nl = criaNodoLista(elem, NULL, NULL);
 
     if (!nl) {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para o novo nodo da \
-                lista!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o novo nodo da lista!");
         return;
     }
 
@@ -93,17 +89,14 @@ void insereFim(Lista l, void* elem)
     NodoLista nl;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     nl = criaNodoLista(elem, NULL, NULL);
 
     if (!nl) {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para o novo nodo da \
-                lista!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o novo nodo da lista!");
         return;
     }
 
@@ -143,13 +136,12 @@ void inserePos(Lista l, int pos, void* elem)
     NodoLista nl, aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (pos < 0 || pos > l->tam) {
-        fprintf(stderr, "%s:%d: posição %d inválida!\n", __func__, __LINE__,
-            pos);
+        PRINT_ERR("posição %d inválida!", pos);
 
         if (elem)
             free(elem);
@@ -174,10 +166,7 @@ void inserePos(Lista l, int pos, void* elem)
     nl = criaNodoLista(elem, aux, aux->prox);
 
     if (!nl) {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para o novo nodo da \
-                lista!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o novo nodo da lista!");
         return;
     }
 
@@ -195,13 +184,12 @@ void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
     int c, c2;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (!comparaElems) {
-        fprintf(stderr, "%s:%d: ponteiro p/ função comparaElems nulo!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ função comparaElems nulo!");
         return;
     }
 
@@ -250,9 +238,7 @@ void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
             // Se chegou ao fim da lista e não inseriu o novo elemento,
             // sai da função
             if (aux == l->fim) {
-                fprintf(stderr,
-                    "%s:%d: não foi possível inserir o elemento na lista.",
-                    __func__, __LINE__);
+                PRINT_ERR("não foi possível inserir o elemento na lista.");
                 return;
             }
 
@@ -266,19 +252,14 @@ void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
         // Se a função comparaElems() não retornou nem -1, nem 0 e nem 1,
         // considera valor inválido!
         else {
-            fprintf(stderr,
-                "%s:%d: valor retornado de comparaElems() inválido! \
-(Deve ser -1, 0 ou 1.)\n",
-                __func__, __LINE__);
+            PRINT_ERR("valor retornado de comparaElems() inválido! (Deve ser -1, 0 ou 1.)");
             return;
         }
     }
     // Se a função comparaElems() não retornou nem -1, nem 0 e nem 1,
     // considera valor inválido!
     else {
-        fprintf(stderr, "%s:%d: valor retornado de comparaElems() inválido! \
-(Deve ser -1, 0 ou 1.)\n",
-            __func__, __LINE__);
+        PRINT_ERR("valor retornado de comparaElems() inválido! (Deve ser -1, 0 ou 1.)");
         return;
     }
 
@@ -288,7 +269,7 @@ void insereOrd(Lista l, void* elem, int (*comparaElems)(void*, void*))
 int tamanho(Lista l)
 {
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return -1;
     }
 
@@ -298,12 +279,12 @@ int tamanho(Lista l)
 void* elemInicio(Lista l)
 {
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return NULL;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return NULL;
     }
 
@@ -313,12 +294,12 @@ void* elemInicio(Lista l)
 void* elemFim(Lista l)
 {
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return NULL;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return NULL;
     }
 
@@ -330,18 +311,17 @@ void* elemPos(Lista l, int pos)
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return NULL;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return NULL;
     }
 
     if (pos < 0 || pos > l->tam - 1) {
-        fprintf(stderr, "%s:%d: posição %d inválida!\n", __func__, __LINE__,
-            pos);
+        PRINT_ERR("posição %d inválida!", pos);
         return NULL;
     }
 
@@ -363,18 +343,17 @@ void percorre(Lista l, void (*acessaElem)(void*))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return;
     }
 
     if (!acessaElem) {
-        fprintf(stderr, "%s:%d: ponteiro p/ função acessaElem() nulo!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ função acessaElem() nulo!");
         return;
     }
 
@@ -396,18 +375,17 @@ void percorreInv(Lista l, void (*acessaElem)(void*))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return;
     }
 
     if (!acessaElem) {
-        fprintf(stderr, "%s:%d: ponteiro p/ função acessaElem() nulo!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ função acessaElem() nulo!");
         return;
     }
 
@@ -429,12 +407,12 @@ void removeInicio(Lista l, void (*removeElem)(void**))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return;
     }
 
@@ -459,12 +437,12 @@ void removeFim(Lista l, void (*removeElem)(void**))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return;
     }
 
@@ -489,17 +467,17 @@ void removePos(Lista l, int pos, void (*removeElem)(void**))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return;
     }
 
     if (pos < 0 || pos > l->tam - 1) {
-        fprintf(stderr, "%s:%d: posição inválida!\n", __func__, __LINE__);
+        PRINT_ERR("posição inválida!");
         return;
     }
 
@@ -530,18 +508,17 @@ int removeCond(Lista l, int (*verifElem)(void*), void (*removeElem)(void**))
     int r;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return -1;
     }
 
     if (l->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
         return 0;
     }
 
     if (!verifElem) {
-        fprintf(stderr, "%s:%d: ponteiro p/ função verifElem() nulo!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ função verifElem() nulo!");
         return -1;
     }
 
@@ -599,18 +576,17 @@ void destroiLista(Lista* l, void (*destroiElem)(void**))
     NodoLista aux;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: ponteiro p/ a lista nulo!\n", __func__,
-            __LINE__);
+        PRINT_ERR("ponteiro p/ a lista nulo!");
         return;
     }
 
     if (!(*l)) {
-        fprintf(stderr, "%s:%d: lista nula!\n", __func__, __LINE__);
+        PRINT_ERR("lista nula!");
         return;
     }
 
     if ((*l)->tam == 0) {
-        fprintf(stderr, "%s:%d: lista vazia\n", __func__, __LINE__);
+        PRINT_ERR("lista vazia");
     } else {
         // Vai removendo os nodos até restar um único nodo
         while ((*l)->tam > 1) {

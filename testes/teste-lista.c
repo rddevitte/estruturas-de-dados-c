@@ -2,13 +2,13 @@
  * @file teste-lista.c
  * @brief Testa a estrutura da lista e suas operações.
  */
-#include "../lista/inc/lista.h"
-#include "./letra/letra.h"
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-// Funções para teste
+#include "../common/macros.h"
+#include "../lista/inc/lista.h"
+#include "./letra/letra.h"
 
 int main(void)
 {
@@ -25,10 +25,10 @@ int main(void)
     insereFim(letras, NULL);
     inserePos(letras, 0, NULL);
     insereOrd(letras, NULL, NULL);
-    printf("Tam. lista: %d\n", tamanho(letras));
-    printf("Elem. início: %p\n", elemInicio(letras));
-    printf("Elem. fim: %p\n", elemFim(letras));
-    printf("Elem. pos. 0: %p\n", elemPos(letras, 0));
+    PRINT_DBG("Tam. lista: %d", tamanho(letras));
+    PRINT_DBG("Elem. início: %p", elemInicio(letras));
+    PRINT_DBG("Elem. fim: %p", elemFim(letras));
+    PRINT_DBG("Elem. pos. 0: %p", elemPos(letras, 0));
     percorre(letras, NULL);
     percorreInv(letras, NULL);
     removeInicio(letras, NULL);
@@ -44,14 +44,14 @@ int main(void)
     letras = criaLista();
 
     if (!letras) {
-        fprintf(stderr, "Erro ao criar lista!\n");
+        PRINT_ERR("Erro ao criar lista!");
         return 1;
     }
 
-    printf("Tam. lista: %d\n", tamanho(letras));
-    printf("Elem. início: %p\n", elemInicio(letras));
-    printf("Elem. fim: %p\n", elemFim(letras));
-    printf("Elem. pos. 0: %p\n", elemPos(letras, 0));
+    PRINT_DBG("Tam. lista: %d", tamanho(letras));
+    PRINT_DBG("Elem. início: %p", elemInicio(letras));
+    PRINT_DBG("Elem. fim: %p", elemFim(letras));
+    PRINT_DBG("Elem. pos. 0: %p", elemPos(letras, 0));
     percorre(letras, NULL);
     percorreInv(letras, NULL);
     removeInicio(letras, NULL);
@@ -67,7 +67,7 @@ int main(void)
     letras = criaLista();
 
     if (!letras) {
-        fprintf(stderr, "Erro ao criar lista!\n");
+        PRINT_ERR("Erro ao criar lista!");
         return 1;
     }
 
@@ -86,60 +86,60 @@ int main(void)
     // deve ins. entre 'H' e 'J'
     insereOrd(letras, criaLetra('I'), comparaLetras);
 
-    puts("\nLista de letras:");
+    PRINT_DBG("Lista de letras:");
     percorre(letras, imprimeLetra);
-    puts("\nLista de letras (inv.):");
+    PRINT_DBG("Lista de letras (inv.):");
     percorreInv(letras, imprimeLetra);
 
-    printf("Tam. lista: %d\n", tamanho(letras));
+    PRINT_DBG("Tam. lista: %d", tamanho(letras));
 
     putchar('\n');
 
     // Parte 4: buscando elementos
     letra = (char*)elemInicio(letras);
-    printf("Elem. início: %p\n", letra);
+    PRINT_DBG("Elem. início: %p", letra);
     imprimeLetra(letra);
 
     letra = (char*)elemFim(letras);
-    printf("Elem. fim: %p\n", letra);
+    PRINT_DBG("Elem. fim: %p", letra);
     imprimeLetra(letra);
 
     letra = (char*)elemPos(letras, 5);
-    printf("Elem. pos. 5: %p\n", letra);
+    PRINT_DBG("Elem. pos. 5: %p", letra);
     imprimeLetra(letra);
 
     letra = (char*)elemPos(letras, 99); // buscando elem. de uma pos. inválida
-    printf("Elem. pos. 99: %p\n", letra);
+    PRINT_DBG("Elem. pos. 99: %p", letra);
     imprimeLetra(letra);
 
     putchar('\n');
 
     // Parte 5: remove (início, fim, pos., cond.)
     rem = removeCond(letras, condLetraA, destroiLetra);
-    printf("%d elem(s). removido(s)\n", rem);
+    PRINT_DBG("%d elem(s). removido(s)", rem);
     rem = removeCond(letras, condLetraJ, destroiLetra);
-    printf("%d elem(s). removido(s)\n", rem);
+    PRINT_DBG("%d elem(s). removido(s)", rem);
     rem = removeCond(letras, condLetraEntreDeF, destroiLetra);
-    printf("%d elem(s). removido(s)\n", rem);
+    PRINT_DBG("%d elem(s). removido(s)", rem);
 
     // não deve conter as letras removidas A, D, E, F e J
-    puts("\nLista de letras:");
+    PRINT_DBG("Lista de letras:");
     percorre(letras, imprimeLetra);
-    puts("\nLista de letras (inv.):");
+    PRINT_DBG("Lista de letras (inv.):");
     percorreInv(letras, imprimeLetra);
 
-    printf("Tam. lista: %d\n", tamanho(letras));
+    PRINT_DBG("Tam. lista: %d", tamanho(letras));
 
     removePos(letras, 2, destroiLetra); // remove 'G'
     removeInicio(letras, destroiLetra); // remove 'B'
     removeFim(letras, destroiLetra); // remove 'I'
 
-    puts("\nLista de letras:");
+    PRINT_DBG("Lista de letras:");
     percorre(letras, imprimeLetra);
-    puts("\nLista de letras (inv.):");
+    PRINT_DBG("Lista de letras (inv.):");
     percorreInv(letras, imprimeLetra);
 
-    printf("Tam. lista: %d\n", tamanho(letras));
+    PRINT_DBG("Tam. lista: %d", tamanho(letras));
 
     putchar('\n');
 
@@ -147,7 +147,7 @@ int main(void)
     destroiLista(&letras, destroiLetra);
 
     if (!letras)
-        puts("Lista destruída.");
+        PRINT_DBG("Lista destruída.");
 
     return 0;
 }

@@ -2,10 +2,12 @@
  * @file fila.c
  * @brief Definição das funções para criação, operações e destruição da fila.
  */
-#include "../inc/fila.h"
-#include "../inc/nodofila.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "../inc/fila.h"
+#include "../inc/nodofila.h"
 
 /** Estrutura da fila*/
 struct fila {
@@ -25,9 +27,7 @@ Fila criaFila(void)
         f->frente = f->atras = NULL;
         f->tam = 0;
     } else {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o nodo da fila!");
     }
 
     return f;
@@ -38,16 +38,14 @@ void enfileira(Fila f, void* elem)
     NodoFila nf;
 
     if (!f) {
-        fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
+        PRINT_ERR("fila nula!");
         return;
     }
 
     nf = criaNodoFila(elem);
 
     if (!nf) {
-        fprintf(stderr,
-            "%s:%d: não foi possível alocar memória para o nodo da fila!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o nodo da fila!");
         return;
     }
 
@@ -72,13 +70,13 @@ void* desenfileira(Fila f)
     void* elem;
 
     if (!f) {
-        fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
+        PRINT_ERR("fila nula!");
         return NULL;
     }
 
     // Caso 1: fila vazia
     if (f->tam == 0) { // ou (f->frente == f->atras && f->frente == NULL) {
-        fprintf(stderr, "%s:%d: fila vazia\n", __func__, __LINE__);
+        PRINT_ERR("fila vazia");
         return NULL;
     }
 
@@ -107,18 +105,17 @@ void percorre(Fila f, void (*acessaElem)(void*))
     NodoFila aux;
 
     if (!f) {
-        fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
+        PRINT_ERR("fila nula!");
         return;
     }
 
     if (f->tam == 0) {
-        fprintf(stderr, "%s:%d: fila vazia\n", __func__, __LINE__);
+        PRINT_ERR("fila vazia");
         return;
     }
 
     if (acessaElem == NULL) {
-        fprintf(stderr, "%s:%d: parâmetro acessaElem nulo\n", __func__,
-            __LINE__);
+        PRINT_ERR("parâmetro acessaElem nulo");
         return;
     }
 
@@ -131,7 +128,7 @@ void percorre(Fila f, void (*acessaElem)(void*))
 int tamanho(Fila f)
 {
     if (!f) {
-        fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
+        PRINT_ERR("fila nula!");
         return -1;
     }
 
@@ -143,12 +140,12 @@ void destroiFila(Fila* f, void (*destroiElem)(void**))
     NodoFila aux;
 
     if (!f) {
-        fprintf(stderr, "%s:%d: ponteiro p/ fila nulo!\n", __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ fila nulo!");
         return;
     }
 
     if (!(*f)) {
-        fprintf(stderr, "%s:%d: fila nula!\n", __func__, __LINE__);
+        PRINT_ERR("fila nula!");
         return;
     }
 

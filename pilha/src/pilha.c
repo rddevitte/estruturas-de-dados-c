@@ -3,10 +3,12 @@
  * @brief Definição das funções de criação, operações e destruição da
  * estrutura pilha.
  */
-#include "../inc/pilha.h"
-#include "../inc/nodopilha.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "../inc/nodopilha.h"
+#include "../inc/pilha.h"
 
 /** Estrutura da pilha */
 struct pilha {
@@ -26,9 +28,7 @@ Pilha criaPilha(void)
         p->topo = NULL;
         p->tam = 0;
     } else {
-        fprintf(stderr,
-            "%s:%d: erro ao alocar espaço de memória para a pilha\n",
-            __func__, __LINE__);
+        PRINT_ERR("erro ao alocar espaço de memória para a pilha");
     }
 
     return p;
@@ -39,7 +39,7 @@ void push(Pilha p, void* elem)
     NodoPilha np;
 
     if (!p) {
-        fprintf(stderr, "%s:%d: pilha nula\n", __func__, __LINE__);
+        PRINT_ERR("pilha nula");
         return;
     }
 
@@ -59,12 +59,12 @@ void* pop(Pilha p)
     NodoPilha novoTopo;
 
     if (!p) {
-        fprintf(stderr, "%s:%d: pilha nula\n", __func__, __LINE__);
+        PRINT_ERR("pilha nula");
         return NULL;
     }
 
     if (p->tam < 1) {
-        fprintf(stderr, "%s:%d: pilha vazia\n", __func__, __LINE__);
+        PRINT_ERR("pilha vazia");
         return NULL;
     }
 
@@ -82,18 +82,17 @@ void percorre(Pilha p, void (*acessaElem)(void*))
     NodoPilha aux;
 
     if (!p) {
-        fprintf(stderr, "%s:%d: pilha nula\n", __func__, __LINE__);
+        PRINT_ERR("pilha nula");
         return;
     }
 
     if (p->tam < 1) {
-        fprintf(stderr, "%s:%d: pilha vazia\n", __func__, __LINE__);
+        PRINT_ERR("pilha vazia");
         return;
     }
 
     if (!acessaElem) {
-        fprintf(stderr, "%s:%d: ponteiro p/ a função acessaElem() nulo!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ a função acessaElem() nulo!");
         return;
     }
 
@@ -106,7 +105,7 @@ void percorre(Pilha p, void (*acessaElem)(void*))
 int tamanho(Pilha p)
 {
     if (!p) {
-        fprintf(stderr, "%s:%d: pilha nula\n", __func__, __LINE__);
+        PRINT_ERR("pilha nula");
         return -1;
     }
 
@@ -118,12 +117,12 @@ void destroiPilha(Pilha* p, void (*destroiElem)(void**))
     NodoPilha aux;
 
     if (!p) {
-        fprintf(stderr, "%s:%d: ponteiro p/ pilha nulo!\n", __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ pilha nulo!");
         return;
     }
 
     if (!(*p)) {
-        fprintf(stderr, "%s:%d: pilha nula\n", __func__, __LINE__);
+        PRINT_ERR("pilha nula");
         return;
     }
 
@@ -135,7 +134,7 @@ void destroiPilha(Pilha* p, void (*destroiElem)(void**))
             (*p)->tam--;
         }
     } else {
-        printf("%s:%d: pilha vazia\n", __func__, __LINE__);
+        PRINT_DBG("pilha vazia");
     }
 
     free(*p);

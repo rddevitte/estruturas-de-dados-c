@@ -3,9 +3,11 @@
  * @brief Definição das funções de criação e "destruição" (desalocação) do
  * nodo da fila.
  */
-#include "../inc/nodofila.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "../inc/nodofila.h"
 
 NodoFila criaNodoFila(void* elem)
 {
@@ -17,9 +19,7 @@ NodoFila criaNodoFila(void* elem)
         nf->elem = elem;
         nf->ant = NULL;
     } else {
-        fprintf(stderr,
-            "%s:%c: não foi possível alocar memória para o nodo da fila!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o nodo da fila!");
     }
 
     return nf;
@@ -28,14 +28,12 @@ NodoFila criaNodoFila(void* elem)
 void destroiNodoFila(NodoFila* nf, void (*destroiElem)(void**))
 {
     if (!nf) {
-        fprintf(stderr, "%s:%c: ponteiro p/ o nodo da fila nulo!\n", __func__,
-            __LINE__);
+        PRINT_ERR("ponteiro p/ o nodo da fila nulo!");
         return;
     }
 
     if (!(*nf)) {
-        fprintf(stderr, "%s:%c: nodo da fila nulo!\n", __func__, __LINE__);
-        return;
+        PRINT_ERR("nodo da fila nulo!");
     }
 
     if (destroiElem)

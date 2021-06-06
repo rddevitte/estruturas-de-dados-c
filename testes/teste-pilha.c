@@ -2,11 +2,13 @@
  * @file teste-pilha.c
  * @brief Testa a estrutura de pilha e suas operações.
  */
-#include "../pilha/inc/pilha.h"
-#include "./nums/nums.h"
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../common/macros.h"
+#include "../pilha/inc/pilha.h"
+#include "./nums/nums.h"
 
 int main(void)
 {
@@ -21,7 +23,7 @@ int main(void)
     push(nums, NULL);
     pop(nums);
     percorre(nums, NULL);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
     destroiPilha(NULL, NULL);
     destroiPilha(&nums, NULL);
 
@@ -31,13 +33,13 @@ int main(void)
     nums = criaPilha();
 
     if (!nums) {
-        fprintf(stderr, "Erro ao criar pilha!\n");
+        PRINT_ERR("Erro ao criar pilha!");
         return 1;
     }
 
     pop(nums);
     percorre(nums, NULL);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
     destroiPilha(&nums, NULL);
 
     putchar('\n');
@@ -46,31 +48,31 @@ int main(void)
     nums = criaPilha();
 
     if (!nums) {
-        fprintf(stderr, "Erro ao criar pilha!\n");
+        PRINT_ERR("Erro ao criar pilha!");
         return 1;
     }
 
     push(nums, criaNum(1));
-    puts("Pilha:");
+    PRINT_DBG("Pilha:");
     percorre(nums, imprimeNum);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
     num = (int*)pop(nums);
-    printf("Núm. desempilhado: %d\n", *num);
+    PRINT_DBG("Núm. desempilhado: %d", *num);
     free(num);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
 
     push(nums, criaNum(2));
     push(nums, criaNum(3));
     push(nums, criaNum(4));
-    puts("Pilha:");
+    PRINT_DBG("Pilha:");
     percorre(nums, imprimeNum);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
     num = (int*)pop(nums);
-    printf("Núm. desempilhado: %d\n", *num);
+    PRINT_DBG("Núm. desempilhado: %d", *num);
     free(num);
-    puts("Pilha:");
+    PRINT_DBG("Pilha:");
     percorre(nums, imprimeNum);
-    printf("Tam. pilha: %d\n", tamanho(nums));
+    PRINT_DBG("Tam. pilha: %d", tamanho(nums));
 
     putchar('\n');
 
@@ -78,7 +80,7 @@ int main(void)
     destroiPilha(&nums, destroiNum);
 
     if (!nums)
-        puts("Pilha destruída.");
+        PRINT_DBG("Pilha destruída.");
 
     return 0;
 }

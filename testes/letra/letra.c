@@ -3,9 +3,11 @@
  * @brief Definição das funções auxiliares para criação, impressão e
  * desalocação dinâmica de caracteres. Usado no teste da lista.
  */
-#include "letra.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "letra.h"
 
 void* criaLetra(char c)
 {
@@ -23,11 +25,11 @@ void* criaLetra(char c)
 void imprimeLetra(void* c)
 {
     if (!c) {
-        fprintf(stderr, "%s:%d: letra nula!\n", __func__, __LINE__);
+        PRINT_ERR("letra nula!");
         return;
     }
 
-    printf("c = %p, *c = '%c'\n", c, *(char*)c);
+    PRINT_DBG("c = %p, *c = '%c'", c, *(char*)c);
 
     return;
 }
@@ -35,12 +37,12 @@ void imprimeLetra(void* c)
 void destroiLetra(void** c)
 {
     if (!c) {
-        fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ letra nulo!");
         return;
     }
 
     if (!(*c)) {
-        fprintf(stderr, "%s:%d: letra nula\n", __func__, __LINE__);
+        PRINT_ERR("letra nula");
         return;
     }
 
@@ -56,8 +58,7 @@ int comparaLetras(void* a, void* b)
     int c;
 
     if (!a || !b) {
-        fprintf(stderr, "%s:%d: ponteiro para letra a ou b nulo(s)!\n",
-            __func__, __LINE__);
+        PRINT_ERR("ponteiro para letra a ou b nulo(s)!");
         return 2;
     }
 
@@ -79,8 +80,7 @@ int condLetraEntreDeF(void* l)
     char* cl;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: ponteiro para letra nulo!\n", __func__,
-            __LINE__);
+        PRINT_ERR("ponteiro para letra nulo!");
         return -1;
     }
 
@@ -94,7 +94,7 @@ int condLetraA(void* l)
     char* cl;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ letra nulo!");
         return -1;
     }
 
@@ -108,7 +108,7 @@ int condLetraJ(void* l)
     char* cl;
 
     if (!l) {
-        fprintf(stderr, "%s:%d: ponteiro p/ letra nulo!\n", __func__, __LINE__);
+        PRINT_ERR("ponteiro p/ letra nulo!");
         return -1;
     }
 

@@ -2,9 +2,11 @@
  * @file nodolista.c
  * @brief Definição das funções do nodo da lista.
  */
-#include "../inc/nodolista.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../../common/macros.h"
+#include "../inc/nodolista.h"
 
 NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 {
@@ -17,10 +19,7 @@ NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
         nl->ant = ant;
         nl->prox = prox;
     } else {
-        fprintf(
-            stderr,
-            "%s:%d: não foi possível alocar memória para o nodo da lista!\n",
-            __func__, __LINE__);
+        PRINT_ERR("não foi possível alocar memória para o nodo da lista!");
     }
 
     return nl;
@@ -29,13 +28,12 @@ NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 void destroiNodoLista(NodoLista* nl, void (*destroiElem)(void**))
 {
     if (!nl) {
-        fprintf(stderr, "%s:%d: ponteiro p/ o nodo da lista nulo!\n", __func__,
-            __LINE__);
+        PRINT_ERR("ponteiro p/ o nodo da lista nulo!");
         return;
     }
 
     if (!(*nl)) {
-        fprintf(stderr, "%s:%d: nodo da lista nulo!\n", __func__, __LINE__);
+        PRINT_ERR("nodo da lista nulo!");
         return;
     }
 
