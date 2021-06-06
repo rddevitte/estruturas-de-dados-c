@@ -1,5 +1,5 @@
 CC=gcc
-FLAGS=-Wall -Wextra -pedantic -g
+FLAGS=-Wall -Wextra -Werror -Wpedantic -g
 RM=rm -vf
 SRC_DIR=src
 INC_DIR=inc
