@@ -6,6 +6,10 @@
 #ifndef FILA_H
 #define FILA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Declaração da estrutura da fila */
 struct fila;
 
@@ -54,5 +58,9 @@ int tamanho(Fila f);
  * @param destroiElem O ponteiro para a função que desaloca o elemento da fila
  */
 void destroiFila(Fila* f, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // FILA_H

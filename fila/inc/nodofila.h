@@ -6,6 +6,10 @@
 #ifndef NODOFILA_H
 #define NODOFILA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Estrutura do nodo da fila */
 struct nodoFila {
     /** Elemento a ser armazenado no nodo da fila */
@@ -31,5 +35,9 @@ NodoFila criaNodoFila(void* elem);
  * armazenado da memória
  */
 void destroiNodoFila(NodoFila* nf, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NODOFILA_H

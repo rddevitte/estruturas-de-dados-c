@@ -6,6 +6,10 @@
 #ifndef NODOPILHA_H
 #define NODOPILHA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Estrutura do nodo pilha */
 struct nodoPilha {
     /** Elemento a ser armazenado no topo da pilha */
@@ -33,5 +37,9 @@ NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo);
  * da memória armazenado no nodo da pilha
  */
 void destroiNodoPilha(NodoPilha* np, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NODOPILHA_H

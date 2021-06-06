@@ -6,6 +6,10 @@
 #ifndef NODOLISTA_H
 #define NODOLISTA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Estrutura do nodo da lista */
 struct nodoLista {
     /** Ponteiro para o elemento armazenado no nodo */
@@ -32,5 +36,9 @@ NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox);
  * armazenado no nodo
  */
 void destroiNodoLista(NodoLista* nl, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NODOLISTA_H

@@ -6,6 +6,10 @@
 #ifndef PILHA_H
 #define PILHA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Declaração da estrutura da pilha */
 struct pilha;
 
@@ -55,5 +59,9 @@ int tamanho(Pilha p);
  * nodo
  */
 void destroiPilha(Pilha* p, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // PILHA_H

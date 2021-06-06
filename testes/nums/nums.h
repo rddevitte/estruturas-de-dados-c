@@ -6,8 +6,16 @@
 #ifndef NUMS_H
 #define NUMS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int* criaNum(int);
 void imprimeNum(void*);
 void destroiNum(void**);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // NUMS_H

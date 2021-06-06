@@ -6,6 +6,10 @@
 #ifndef LISTA_H
 #define LISTA_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /** Declaração da estrutura da lista */
 struct lista;
 
@@ -142,5 +146,9 @@ int removeCond(Lista l, int (*acessaElem)(void*), void (*removeElem)(void**));
  * os elementos dos nodos da lista
  */
 void destroiLista(Lista* l, void (*destroiElem)(void**));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // LISTA_H
