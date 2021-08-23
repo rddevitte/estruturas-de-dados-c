@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/nodopilha.h"
-#include "../inc/pilha.h"
+#include "common/macros.h"
+#include "pilha/nodopilha.h"
+#include "pilha/pilha.h"
 
 /** Estrutura da pilha */
 struct pilha {

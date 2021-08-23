@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/lista.h"
-#include "../inc/nodolista.h"
+#include "common/macros.h"
+#include "lista/lista.h"
+#include "lista/nodolista.h"
 
 /** Estrutura da lista */
 struct lista {

@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/nodofila.h"
+#include "common/macros.h"
+#include "fila/nodofila.h"
 
 NodoFila criaNodoFila(void* elem)
 {

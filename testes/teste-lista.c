@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../common/macros.h"
-#include "../lista/inc/lista.h"
-#include "./letra/letra.h"
+#include "common/macros.h"
+#include "lista/lista.h"
+#include "letra/letra.h"
 
 int main(void)
 {

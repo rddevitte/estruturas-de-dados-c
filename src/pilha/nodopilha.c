@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/nodopilha.h"
+#include "common/macros.h"
+#include "pilha/nodopilha.h"
 
 NodoPilha criaNodoPilha(void* elem, NodoPilha abaixo)
 {

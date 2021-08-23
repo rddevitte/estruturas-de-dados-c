@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../common/macros.h"
-#include "../pilha/inc/pilha.h"
-#include "./nums/nums.h"
+#include "common/macros.h"
+#include "pilha/pilha.h"
+#include "nums/nums.h"
 
 int main(void)
 {

@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/fila.h"
-#include "../inc/nodofila.h"
+#include "common/macros.h"
+#include "fila/fila.h"
+#include "fila/nodofila.h"
 
 /** Estrutura da fila*/
 struct fila {

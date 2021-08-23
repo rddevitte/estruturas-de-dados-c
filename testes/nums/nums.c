@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
+#include "common/macros.h"
 #include "nums.h"
 
 int* criaNum(int n)

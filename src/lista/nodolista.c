@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../common/macros.h"
-#include "../inc/nodolista.h"
+#include "common/macros.h"
+#include "lista/nodolista.h"
 
 NodoLista criaNodoLista(void* elem, NodoLista ant, NodoLista prox)
 {
