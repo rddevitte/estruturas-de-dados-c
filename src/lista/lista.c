@@ -153,7 +153,8 @@ void inserePos(Lista l, int pos, void* elem)
         insereInicio(l, elem);
         return;
     }
-    if (pos > 0 && pos == l->tam) {
+
+    if (pos == l->tam) {
         insereFim(l, elem);
         return;
     }
