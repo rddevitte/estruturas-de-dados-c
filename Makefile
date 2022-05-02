@@ -1,104 +1,48 @@
-SHELL=/usr/bin/bash
 CC=gcc
-FLAGS=-Wall         \
-      -Wextra       \
-      -Werror       \
-      -Wpedantic    \
-      -I $(INC_DIR) \
-      -g
 RM=rm -vf
-SRC_DIR=src
-INC_DIR=include
-OBJ_DIR=obj
+INCDIR=$(CURDIR)/include
+LIBDIR=$(CURDIR)/lib
+OBJDIR=$(CURDIR)/obj
+TESTDIR=$(CURDIR)/testes
+CFLAGS=-Wall       \
+       -Wextra     \
+       -Werror     \
+       -pedantic   \
+       -I$(INCDIR) \
+       -g
+LIBS=fila lista pilha
+TESTS=$(LIBS:%=teste-%)
 
-.PHONY : all objdirs clean mrproper
+export CC RM INCDIR LIBDIR OBJDIR CFLAGS LIBS
 
-all: objdirs teste-pilha teste-fila teste-lista
+.PHONY: all
+all: $(LIBS) $(TESTS)
 
-teste-pilha: ./testes/$(OBJ_DIR)/teste-pilha.o \
-             ./testes/nums/nums.o              \
-             ./$(OBJ_DIR)/pilha/pilha.o        \
-             ./$(OBJ_DIR)/pilha/nodopilha.o
-	$(CC) $^ -o $@ $(FLAGS)
+$(LIBDIR):
+	@mkdir -pv $@
 
-teste-fila: ./testes/$(OBJ_DIR)/teste-fila.o \
-            ./testes/nums/nums.o             \
-            ./$(OBJ_DIR)/fila/fila.o         \
-            ./$(OBJ_DIR)/fila/nodofila.o
-	$(CC) $^ -o $@ $(FLAGS)
+$(OBJDIR):
+	@mkdir -pv $@
 
-teste-lista: ./testes/$(OBJ_DIR)/teste-lista.o \
-             ./testes/letra/letra.o            \
-             ./$(OBJ_DIR)/lista/lista.o        \
-             ./$(OBJ_DIR)/lista/nodolista.o
-	$(CC) $^ -o $@ $(FLAGS)
+$(LIBDIR)/lib%.a: $(LIBDIR) $(OBJDIR)
+	$(MAKE) -C src/$*
 
-./testes/$(OBJ_DIR)/teste-pilha.o: ./testes/teste-pilha.c     \
-                                   ./$(INC_DIR)/pilha/pilha.h \
-                                   ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
+.PHONY: $(LIBS)
+$(LIBS): %: $(LIBDIR)/lib%.a
 
-./$(OBJ_DIR)/pilha/pilha.o: ./$(SRC_DIR)/pilha/pilha.c     \
-                            ./$(INC_DIR)/pilha/pilha.h     \
-                            ./$(INC_DIR)/pilha/nodopilha.h \
-                            ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
+.PHONY: $(TESTS)
+$(TESTS): teste-%: $(TESTDIR)/teste-%
 
-./$(OBJ_DIR)/pilha/nodopilha.o: ./$(SRC_DIR)/pilha/nodopilha.c \
-                                ./$(INC_DIR)/pilha/nodopilha.h \
-                                ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
+$(TESTDIR)/teste-%: $(LIBDIR)/lib%.a
+	$(MAKE) -C $(TESTDIR) teste-$*
+	$(TESTDIR)/teste-$*
 
-./testes/$(OBJ_DIR)/teste-fila.o: ./testes/teste-fila.c    \
-                                  ./$(INC_DIR)/fila/fila.h \
-                                  ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./$(OBJ_DIR)/fila/fila.o: ./$(SRC_DIR)/fila/fila.c     \
-                          ./$(INC_DIR)/fila/fila.h     \
-                          ./$(INC_DIR)/fila/nodofila.h \
-                          ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./$(OBJ_DIR)/fila/nodofila.o: ./$(SRC_DIR)/fila/nodofila.c \
-                              ./$(INC_DIR)/fila/nodofila.h \
-                              ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./testes/$(OBJ_DIR)/teste-lista.o: ./testes/teste-lista.c     \
-                                   ./$(INC_DIR)/lista/lista.h \
-                                   ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./$(OBJ_DIR)/lista/lista.o: ./$(SRC_DIR)/lista/lista.c     \
-                            ./$(INC_DIR)/lista/nodolista.h \
-                            ./$(INC_DIR)/lista/lista.h     \
-                            ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./$(OBJ_DIR)/lista/nodolista.o: ./$(SRC_DIR)/lista/nodolista.c \
-                                ./$(INC_DIR)/lista/nodolista.h \
-                                ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./testes/letra/letra.o: ./testes/letra/letra.c \
-                        ./testes/letra/letra.h \
-                        ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-./testes/nums/nums.o: ./testes/nums/nums.c \
-                      ./testes/nums/nums.h \
-                      ./$(INC_DIR)/common/macros.h
-	$(CC) -c $< -o $@ $(FLAGS)
-
-objdirs:
-	@mkdir -p ./$(OBJ_DIR)/{fila,lista,pilha}
-	@mkdir -p ./testes/$(OBJ_DIR)
-
+.PHONY: clean
 clean:
-	$(RM) ./$(OBJ_DIR)/{fila,lista,pilha}/*.o
-	$(RM) ./testes/{nums/nums,letra/letra}.o
-	$(RM) ./testes/$(OBJ_DIR)/*.o
+	-@$(RM) -r $(OBJDIR)
+	$(MAKE) -C $(TESTDIR) clean
 
+.PHONY: mrproper
 mrproper: clean
-	$(RM) teste-{fila,lista,pilha}
+	-@$(RM) -r $(LIBDIR)
+	$(MAKE) -C $(TESTDIR) mrproper

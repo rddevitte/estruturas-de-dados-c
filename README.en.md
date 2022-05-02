@@ -1,8 +1,12 @@
 # Data Structures in C
 
-This project is an implementation in C language of basic data structures, which are data type generic and dynamically allocated, that can be imported and freely used in other projects, with minor modifications.
+This project is an implementation in C language of basic data structures, which are data type
+generic and dynamically allocated, that can be imported and freely used in other projects, with
+minor modifications.
 
-At the moment, the implemented data structures are: stack, queue and circular doubly linked list (in portuguese, *pilha*, *fila* and *lista duplamente encadeada circular* respectively). It is planned to be implemented other data structures in the future, such as graph and binary tree.
+At the moment, the implemented data structures are: stack, queue and circular doubly linked list
+(in portuguese, *pilha*, *fila* and *lista duplamente encadeada circular* respectively). It is
+planned to be implemented other data structures in the future, such as graph and binary tree.
 
 ## Containers and supported operations
 
@@ -25,12 +29,17 @@ At the moment, the implemented data structures are: stack, queue and circular do
 
 ## Building and running
 
-On GNU/Linux, after cloning the project with `git clone`, run:
+On GNU/Linux, after cloning the project with `git clone`, run the desired target:
 
-`make`, `make all` or the test target of the given structure (`make teste-fila` (queue), `make teste-lista` (list) or `make teste-pilha` (stack)). (**Note:** before compiling the specific target, please run at the first time `make objdirs`, to create the *obj/* directories).
+* Either `make lista`, `make fila` or `make pilha` to compile the static lib of the corresponding
+  data structure;
 
-To run the compiled binary: `./teste-fila`, `./teste-lista` or `./teste-pilha`.
+* Either `make teste-lista`, `make teste-fila` or `make teste-pilha` to compile the static lib as
+  well as run the test executable of the corresponding data structure;
+
+* Just `make` or `make all` to run all the targets above mentioned.
 
 ### Cleanup
 
-To remove the object files (*.o): `make clean`. To remove them and the binaries as well: `make mrproper`.
+To remove the object files (\*.o): `make clean`. To remove them and the binaries as well:
+`make mrproper`.

@@ -1,9 +1,6 @@
-cscope.*
+lib/
 obj/
-tags
-testes/letra/letra.o
-testes/nums/nums.o
-testes/obj/
-teste-fila
-teste-lista
-teste-pilha
+testes/*.o
+testes/teste-fila
+testes/teste-lista
+testes/teste-pilha
