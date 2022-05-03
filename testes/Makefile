@@ -1,7 +1,5 @@
-TARGETS=$(LIBS:%=teste-%)
-
 .PHONY: all
-all: $(TARGETS)
+all: $(TESTS)
 
 letra.o: letra/letra.c
 	$(CC) -c $< -o $@ $(CFLAGS)
@@ -21,4 +19,4 @@ clean:
 
 .PHONY: mrproper
 mrproper: clean
-	-@$(RM) $(TARGETS)
+	-@$(RM) $(TESTS)

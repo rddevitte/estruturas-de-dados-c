@@ -13,7 +13,7 @@ CFLAGS=-Wall       \
 LIBS=fila lista pilha
 TESTS=$(LIBS:%=teste-%)
 
-export CC RM INCDIR LIBDIR OBJDIR CFLAGS LIBS
+export CC RM INCDIR LIBDIR OBJDIR CFLAGS TESTS
 
 .PHONY: all
 all: $(LIBS) $(TESTS)
